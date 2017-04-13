@@ -1,0 +1,90 @@
+﻿<div ng-controller="TransferBankController"  class="col-md-12" style="vertical-align: top">
+
+
+    <table id ="TransferBank" class="col-md-12">
+        <tr >
+            <td class="col-md-3"><label>Transfering_Bank_PaymentType</label></td>
+           
+            <td class="col-md-3">
+                <input type="text" data-minimum-search-valid required name="Value"  id="txtValue"  class ="form-control"> </td>         
+        <td class="col-md-3"><label>Transfering Bank IsAccountHolder</label></td>
+           
+            <td class="col-md-3">
+                <input type="checkbox" data-minimum-search-valid required name="Value"  id="Text1"   class ="form-control"> </td>        
+               
+        
+            </tr>
+        <tr >    
+             <td class="col-md-3"><label>Transfering Bank ThirdPartyEntityNumber</label></td>
+           
+            <td class="col-md-3">
+                <input type="text" data-minimum-search-valid required name="Value"  id="Text7" class ="form-control"> </td>         
+                
+           <td class="col-md-3"><label>Transfering Bank BankCode</label></td>
+           
+            <td class="col-md-3">
+                <input type="text" data-minimum-search-valid required name="Value"  id="Text3" class ="form-control"> </td>  
+            </tr>
+        <tr>       
+        <td class="col-md-3"><label>Transfering Bank BranchCode</label></td>
+           
+            <td class="col-md-3">
+                <input type="text" data-minimum-search-valid required name="Value"  id="Text4"  class ="form-control"> </td>         
+        <td class="col-md-3"><label>Transfering Bank AccountType</label></td>
+           
+            <td class="col-md-3">
+                <input type="text" data-minimum-search-valid required name="Value"  id="Text5"  class ="form-control"> </td>         
+       
+        </tr>
+        <tr>            
+            <td class="col-md-3"><label>Transfering Bank AccountNumber</label></td>           
+            <td class="col-md-3">
+                <input type="text" data-minimum-search-valid required name="Value"  id="Text6"  class ="form-control"> </td>         
+        
+           
+        </tr>
+        <tr>
+                <td class="col-md-3">
+                      <label>Select Source Fund Type</label>
+                   <select name="singleSelect" ng-model="data.singleSelect" style="width:200px; height:30px;">                         
+                    <option value="option-1">Specific Repurchase</option>
+                    <option value="option-2">100% withdrawal</option>                      
+
+
+
+    </select>
+
+                </td>
+                <td class="col-md-3">
+                      <label>Select Denomination</label>
+                   <select name="singleSelect" ng-model="data.singleSelect" style="width:200px; height:30px;">
+                          
+                          <option value="option-1">Combination</option>
+                          <option value="option-2">Percentage</option>
+                         <option value="option-2">Amount</option>
+                         <option value="option-2">Units</option>
+                          <option value="option-2">Divorce</option>
+
+
+
+    </select>
+                </td>
+                 <td class="col-md-3">
+                       <label>Select Repurchase Method</label>
+                   <select name="singleSelect" ng-model="data.singleSelect" style="width:200px; height:30px;">
+                         
+                        <option value="option-1">Proportionate</option>
+                         <option value="option-2">None</option>
+                         
+
+
+
+    </select>
+                </td>
+            </tr>
+        
+     
+    </table> 
+</div>
+
+

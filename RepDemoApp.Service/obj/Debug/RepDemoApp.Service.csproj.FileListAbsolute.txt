@@ -1,0 +1,5 @@
+D:\Users\spadalkar\Silica\Pooja-Robotics-Project\RepDemoAppLatest\RepDemoApp.Service\bin\RepDemoApp.Service.dll
+D:\Users\spadalkar\Silica\Pooja-Robotics-Project\RepDemoAppLatest\RepDemoApp.Service\bin\RepDemoApp.Service.pdb
+D:\Users\spadalkar\Silica\Pooja-Robotics-Project\RepDemoAppLatest\RepDemoApp.Service\obj\Debug\RepDemoApp.Service.csprojResolveAssemblyReference.cache
+D:\Users\spadalkar\Silica\Pooja-Robotics-Project\RepDemoAppLatest\RepDemoApp.Service\obj\Debug\RepDemoApp.Service.dll
+D:\Users\spadalkar\Silica\Pooja-Robotics-Project\RepDemoAppLatest\RepDemoApp.Service\obj\Debug\RepDemoApp.Service.pdb

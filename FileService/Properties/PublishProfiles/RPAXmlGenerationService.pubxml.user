@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Users\spadalkar\Silica\RPAXmlGeneratorService</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/FileService.dll">
+      <publishTime>12/19/2016 12:36:01</publishTime>
+    </File>
+    <File Include="Global.asax">
+      <publishTime>11/16/2016 15:27:24</publishTime>
+    </File>
+    <File Include="Service1.svc">
+      <publishTime>11/16/2016 14:59:31</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>12/19/2016 12:36:02</publishTime>
+    </File>
+    <File Include="Xml2Xml.xslt">
+      <publishTime>12/19/2016 12:10:30</publishTime>
+    </File>
+    <File Include="XMLFile1.xml">
+      <publishTime>11/16/2016 17:19:16</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

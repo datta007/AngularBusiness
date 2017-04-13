@@ -1,0 +1,5 @@
+D:\Users\spadalkar\Silica\Pooja-Robotics-Project\RepDemoAppLatest\FileService\bin\FileService.dll
+D:\Users\spadalkar\Silica\Pooja-Robotics-Project\RepDemoAppLatest\FileService\bin\FileService.pdb
+D:\Users\spadalkar\Silica\Pooja-Robotics-Project\RepDemoAppLatest\FileService\obj\Release\FileService.dll
+D:\Users\spadalkar\Silica\Pooja-Robotics-Project\RepDemoAppLatest\FileService\obj\Release\FileService.pdb
+D:\Users\spadalkar\Silica\Pooja-Robotics-Project\RepDemoAppLatest\FileService\obj\Release\FileService.csprojResolveAssemblyReference.cache

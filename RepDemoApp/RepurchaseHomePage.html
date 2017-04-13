@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <!--<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />-->
+    <!--UNCOMMENT the above line while deploying the code on server-->
+    <title></title>
+
+
+</head>
+<body ng-app="RepurchaseDemo" ng-controller="AppController" style="vertical-align: top;">
+
+    <!--<div>
+        <ng-header>  </ng-header>
+    </div>-->
+    <div data-ng-controller="MenuController">
+        <ng-menu></ng-menu>
+    </div>
+    <div class="Maincontainer">
+        <div id="MainBody" class="dtcontent">
+            <!--     <div class="row|container-fluid" style="height:100%">-->
+            <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
+            <div ui-view style="height: 85%"></div>
+            <!-- </div>-->
+
+        </div>
+    </div>
+
+    <link href="assets/css/loader.css" rel="stylesheet" />
+    <link href="assets/css/jquery-ui.min.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="assets/css/loading-bar.css" rel="stylesheet" />
+    <link href="assets/css/swapstyle.css" rel="stylesheet" />
+    <link href="assets/css/ngDialog.css" rel="stylesheet" />
+    <link href="assets/css/ngDialog-theme-default.css" rel="stylesheet" />
+    <link href="assets/css/ngDialog-theme-plain.css" rel="stylesheet" />
+    <link href="assets/css/small-dialog.css" rel="stylesheet" />
+    <link href="assets/css/HomePage.css" rel="stylesheet" />
+    <link href="assets/css/scrollbarCS.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap-theme.css" rel="stylesheet" />
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+    <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.css" />-->
+
+    <link href="assets/css/select.css" rel="stylesheet" />
+    <!-- <link href="assets/custom/dtoverride.css" rel="stylesheet" />  
+    <link href="assets/custom/dtoverride.css" rel="stylesheet" />  -->
+    <script src="assets/js/numeral.min.js"></script>
+    <script src="assets/js/angular.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-sanitize.js"></script>
+    <script src="assets/js/ui-bootstrap-tpls-0.13.0.min.js"></script>
+    <script src="assets/js/select.js"></script>
+    <script src="assets/js/jquery-1.11.1.min.js"></script>
+    <!--<script src="assets/js/jqxcore.js"></script>-->
+    <script src="assets/js/json2xml.js"></script>
+    <script src="app/common/XmlToJson.js"></script>
+
+    <!-- <script src="assets/js/jqxbuttons.js"></script>
+    <script src="assets/js/jqxdata.js"></script>
+
+     <script src="assets/js/jqxdata.export.js"></script>
+     <script src="assets/js/jqxangular.js"></script>-->
+    <!--<script src="app/Core/AllowCORS.js"></script>-->
+
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-sanitize.js"></script>
+    <script src="assets/js/ui-bootstrap-tpls-0.13.0.min.js"></script>
+    <script src="assets/js/angular-ui-router.min.js"></script>
+    <script src="assets/js/angular-animate.min.js"></script>
+    <!-- <script src="app/modules/Header/HeaderDirective.js"></script> -->
+    <script src="app/core/RepurchaseDemo.js"></script>
+    <!-- <script src="app/modules/Header/HeaderDirective.js"></script> -->
+    <script src="app/modules/Repurchases/RepurchaseHomeScreenDirective.js"></script>
+    <script src="app/modules/Repurchases/RepurchaseHomeScreenController.js"></script>
+    <script src="app/modules/PeopleSearch/PeopleSearchDirective.js"></script>
+    <script src="app/modules/PeopleSearch/PeopleSearchController.js"></script>
+    <script src="app/modules/PeopleSearch/PeopleLookUpDirective.js"></script>
+    <script src="app/modules/WebReference/WebReferenceDirectives.js"></script>
+    <script src="app/modules/WebReference/WebReferenceController.js"></script>
+
+    <!--<script src="app/modules/WebRefernce/WebReferenceDirectives.js"></script>
+     <script src="app/modules/WebRefernce/WebReferenceController.js>"></script>-->
+    <!-- <script src="app/modules/TransferBank/TransferBankDirectives.js"></script>
+     <script src="app/modules/TransferBank/TransferBankController.js>"></script>-->
+    <script src="app/common/ServiceReference.js"></script>
+    <script src="app/core/KeyHandler.js"></script>
+    <script src="assets/js/ngDialog.js"></script>
+    <script src="app/services/AdditionService.js"></script>
+    <script src="app/modules/Additions/AdditionController.js"></script>
+    <script src="app/modules/Additions/AdditionsDirective.js"></script>
+
+    <script src="app/modules/Menu/MenuDirective.js"></script>
+    <script src="app/modules/Menu/MenuController.js"></script>
+    <script src="app/modules/Header/HeaderDirective.js"></script>
+    <script
+        src="https://code.jquery.com/jquery-1.9.1.min.js"
+        integrity="sha256-wS9gmOZBqsqWxgIVgA8Y9WcQOa7PgSIX+rPA0VL2rbQ="
+        crossorigin="anonymous">
+
+    </script>
+    <script type="text/javascript">
+        var configurationVariables = {
+            maintenanceInProgress: 0,
+            ajaxTimeout: 90000,
+            seproxyenabled: true,
+            seproxy: '/SilicaExpressProxy'
+        };
+
+        if (!Array.prototype.indexOf) {
+            Array.prototype.indexOf = function (elt /*, from*/) {
+                var len = this.length >>> 0;
+
+                var from = Number(arguments[1]) || 0;
+                from = (from < 0) ? Math.ceil(from) : Math.floor(from);
+                if (from < 0)
+                    from += len;
+
+                for (; from < len; from++) {
+                    if (from in this && this[from] === elt)
+                        return from;
+                }
+                return -1;
+            };
+        }
+
+        // Ajax setup
+        $.silicaCentralInternalCoreAjaxCache = [];
+        function silicaCentralInternalCoreAjaxCacheAbortAll() {
+            $.each($.silicaCentralInternalCoreAjaxCache, function (idx, jqXHR) {
+                if (typeof jqXHR !== 'undefined' &&
+                    typeof jqXHR.actualUrl !== 'undefined' &&
+                    jqXHR.actualUrl != null) {
+                    if (jqXHR.actualUrl.indexOf('/menu') > 0) {
+                        return;
+                    }
+                    jqXHR.abort();
+                }
+            });
+            $.silicaCentralInternalCoreAjaxCache = [];
+        }
+
+        $.ajaxSetup({
+            beforeSend: function (jqXHR, settings) {
+                if (typeof settings.headers != 'undefined' &&
+                    typeof settings.headers.actual_url != 'undefined' &&
+                    settings.headers.actual_url != null) {
+                    jqXHR.actualUrl = settings.headers.actual_url;
+                }
+                $.silicaCentralInternalCoreAjaxCache.push(jqXHR);
+            },
+            complete: function (jqXHR) {
+                var index = $.silicaCentralInternalCoreAjaxCache.indexOf(jqXHR);
+                if (index > -1) {
+                    $.silicaCentralInternalCoreAjaxCache.splice(index, 1);
+                }
+            }
+        });
+
+        // Register AJAX pre-filter : options, original options
+        $.ajaxPrefilter(function (options, originalOptions) {
+            $.support.cors = true;
+
+            // Substitute to go to reverse proxy
+            if (typeof configurationVariables != 'undefined') {
+                var isReverseProxyEnabled = configurationVariables.seproxyenabled;
+
+                // Substitute urls
+                if (options.dataType == 'html' || options.dataType == 'script') {
+                    options.global = false;
+                }
+                if (isReverseProxyEnabled && options.dataType != 'html' && options.dataType != 'script') {
+
+                    // Check for ignore proxy
+                    if (typeof options.ignoreProxy != 'undefined' && options.ignoreProxy) {
+                        return false;
+                    }
+
+                    var originalUrl = options.url;
+                    if (typeof window.location.port != 'undefined' &&
+                        window.location.port != null &&
+                        window.location.port != '') {
+                        options.url = window.location.protocol + '//' + window.location.hostname + configurationVariables.seproxy;
+                    } else {
+                        options.url = window.location.protocol + '//' + window.location.hostname + configurationVariables.seproxy;
+                    }
+                    options.cache = false;
+
+                    // Update header
+                    $('html').attr('le', String(new Date()));
+
+                    if (options.type == 'GET') {
+                        if (typeof originalOptions.data != 'undefined') {
+                            $.each(originalOptions.data, function (key, value) {
+                                if (originalUrl.indexOf('?') == -1)
+                                    originalUrl += '?';
+                                originalUrl += key + "=" + value + "&"
+                            });
+                        }
+                    }
+                    options.headers["actual_url"] = originalUrl;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

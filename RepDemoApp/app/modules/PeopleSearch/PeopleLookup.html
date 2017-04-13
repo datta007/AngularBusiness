@@ -1,0 +1,37 @@
+﻿<div style="width:100%;">  
+    <div class="peoplelookup" style="width:100%">    
+         
+    <table class="table table-hover table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr class="bg-primary">
+                <th>People Number</th>
+                <th>People Name</th>
+            </tr>
+        </thead>
+        <tbody >
+            <tr id="{{People.People_Number}}"ng-repeat="People in Peoples" ng-dblclick="closeThisDialog(People)" onclick="highlight(this)" ng-click="fSingleClick(People)">
+               <td>{{People.People_Number}} </td>
+               <td>{{People.Name}} </td>
+               
+            </tr>
+        </tbody>
+       
+               
+    </table>
+     </div> 
+    <div style="width:100%;">
+        <table style="width:100%;">
+            <tr>
+                <td style="width:20%;text-align:left"><button class="btn btn-danger" ng-click="closeThisDialog(null)">Cancel</button></td>
+                <td style="width:60%"></td>
+                <td style="width:20%;text-align:right"><button class="btn btn-success" ng-click="closeThisDialog(selectedPerson)">Ok</button></td>
+            </tr>
+        </table>
+    
+    
+     </div>
+          
+     
+   
+</div>
+

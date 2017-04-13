@@ -1,0 +1,199 @@
+﻿<div ng-controller="RepurchaseHomeScreenController" style="height: 100%">
+    Repurchase Page
+    
+        <table class="col-md-12 mytable">
+           <accordion close-others="true" >
+             <accordion-group heading="Web Reference Details">
+                   <ng-web-reference></ng-web-reference>
+            <div style="height: 20%; margin-top: 1%">
+             
+                
+            </accordion-group>
+               </accordion>
+            </table>
+       
+   
+    
+  
+        
+          
+             <accordion close-others="true" >
+             <accordion-group heading="Entity Details">          
+                     <ng-people></ng-people>
+                 </accordion-group></accordion>
+                   
+                
+                
+
+           
+             
+             
+           
+       
+   
+         <accordion close-others="true" >
+             <accordion-group heading="Deal Details">
+           <table class="table table-hover table-bordered table-striped">
+               <tr>
+              
+                 </tr>
+              <thead>
+                  <tr class="bg-primary">                      
+                      <th style="text-align:center">Deal No.</th>
+                      <th style="text-align:center">CancelDebitOrders</th>                    
+                  </tr>
+              </thead> 
+                 <tbody >   
+              <tr>
+                        <td><input type="text" class="filterclass" ng-model="Checkbox3"  class ="form-control" /></td>
+		               <td><input type="text" class="filterclass" ng-model="Text4"  class ="form-control" /></td>
+                               
+	                  </tr>
+                     </tbody>
+                </table>
+                 </accordion-group>
+               </accordion>
+                    
+                   
+                    
+           
+   
+    
+        <accordion close-others="false" >
+             <accordion-group heading="Repurchase Details">
+                 <table class="col-md-12 mytable">
+        <tr>
+         <td>
+                    <label>Authorization Number</label>
+                </td>
+                <td >
+                    <input type="text" name="Value" id="Text5" ng-enter="ChangeEntity()" class="form-control">
+                </td>
+           
+                <td colspan="2" >  
+                    <label>Select Repurchase Type</label>
+                     <select name="singleSelect" ng-model="data.singleSelect">                          
+                          <option value="option-1">Pre-Retirement Withdrawal</option>
+                         <option value="option-2">Retirement</option>
+                         <option value="option-2">Section 14 transfer</option>
+                         <option value="option-2">Death Claim</option>
+                          <option value="option-2">Divorce Orders</option>
+    </select>
+                </td>
+
+            </tr>
+                      </table> 
+          </accordion-group>
+               </accordion>
+            
+
+   
+        <accordion close-others="false" >
+             <accordion-group heading="Transaction Details">
+        <table class="col-md-12 mytable">
+            <tr>
+                <td class="col-md-3">
+                      <label>Select Transact Type</label>
+                    <select name="singleSelect" ng-model="data.singleSelect" style="width:200px; height:30px;">
+                       
+      <option value="option-1">Emigration</option>
+      <option value="option-2">Partial Withdrawal</option>
+                         <option value="option-2">Full Withdrawal</option>
+                         <option value="option-2">Annuity less than R7000</option>
+                          <option value="option-2"> 1/3 Cash and 2/3 Transfer</option>
+                </td>
+                <td class="col-md-1" >
+                    <label>PaymentInstruction</label>
+                </td>
+                <td class="col-md-3">
+                    <input type="text" name="Value" id="Text6"  class="form-control" />
+                </td>
+                <td class="col-md-2" >
+                    <label>Is2 3UnitTransfer</label></td>
+                <td class="col-md-2">
+                    <input type="checkbox" id="Is2_3_Unit_Transfer" class="form-control" />
+                </td>
+            </tr>
+              </table>
+              </accordion-group>
+               </accordion>
+      
+   
+              
+                   <accordion close-others="false" >
+             <accordion-group heading="Transfer bank Details">
+                  
+                     <ng-transfer-bank></ng-transfer-bank>   
+            
+              </accordion-group>
+               </accordion>
+       
+   
+       
+            <accordion close-others="false" >
+             <accordion-group heading="Bank Details">
+                  <table class="table table-hover table-bordered table-striped">
+            <thead>
+                <tr class="bg-primary">
+                    <th>
+                        <input type="checkbox" class="filterclass" id="cbAllInststument" ng-model="allSelected" ng-click="checkAll(this)" ng-disabled="(TransferType=='P')? false: true" /></th>
+                    <th style="text-align: center">BankName</th>
+                    <th style="text-align: center">IsNewBank</th>
+                    <th style="text-align: center">isItVerified</th>
+                    <th style="text-align: right">Deposit Bank PaymentType</th>
+                    <th style="text-align: center">Deposit Bank IsAccountHolder</th>
+                    <th style="text-align: center">Deposit Bank ThirdPartyEntityNumber</th>
+                    <th style="text-align: center">Deposit Bank BankCode </th>
+                    <th style="text-align: center">Deposit Bank BranchCode</th>
+                    <th style="text-align: center">Deposit Bank AccountType </th>
+                    <th style="text-align: center">Deposit Bank AccountNumber</th>
+                    <th style="text-align: center" data-toggle="tooltip" title="{{splittooltip}} ">&nbsp;</th>
+                </tr>
+            </thead>
+           
+            <tr>
+                <td>
+                    <input type="checkbox" class="filterclass" id="cbInstrument" ng-model="instrument.Selected" ng-click="toggleInstrumentSelection()" ng-disabled="(TransferType=='P')? false: true" /></td>
+                <td style="text-align: center">
+                    <input type="text" class="form-control" id="Bank_name" /></td>
+                <td style="text-align: right">
+                    <input type="checkbox" ng-click="IsChecked()" ng-model="TempDeals.isSpouse" class="form-control" id="isNewBank" /></td>
+                <td style="text-align: right">
+                    <input type="checkbox" ng-click="IsChecked()" ng-model="TempDeals.isSpouse" class="form-control" id="isItVerified" /></td>
+                <td style="text-align: right"> <input type="text" class="form-control" id="Paytment_Type" /></td>
+                <td style="text-align: right"><input type="text" class="form-control" id="IsaccountHolder" /></td>
+                <td style="text-align: center"> <input type="text" class="form-control" id="TeBank_Codext5" /></td>
+                <td style="text-align: center"><input type="text" class="form-control" id="Account_Type" /></td>
+                <td style="text-align: center"> <input type="text" class="form-control" id="Acount_Number" /></td>
+                <td style="text-align: center"><input type="text" class="form-control" id="Text8" /></td>
+                <td style="text-align: center"> <input type="text" class="form-control" ng-disabled="((instrument.Selected) && (instrument.Unitised_WAC == 1))? false: true" ng-model="instrument.WAC" ng-change="isNumericInstrument(instrument,3)" ng-keypress="checkdecimals(instrument,3,$event)" /></td>
+                <td style="text-align: center">&nbsp;</td>
+                
+            </tr>
+
+            
+                 <tfoot>
+                     <tr>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         <td></td>
+                         
+
+                     </tr>
+                 </tfoot>
+                      </table>
+              </accordion-group>
+               </accordion>
+        
+    <button id="btnChangeEntity" type="button" ng-click="convertToXML()" class="btn btn-primary">Add to XML</button>
+ 
+
+   
+</div>

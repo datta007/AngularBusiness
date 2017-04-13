@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body data-ng-app="RepurchaseDemo" data-ng-controller="MenuController">
+    <!-- <div>
+        <ul class="nav nav-pills">
+            <li data-ng-class="{active: item.active}" data-ng-repeat="item in menuitems">
+                <a data-ng-click="Navigate(item)">{{item.title}} </a>
+            </li>
+        </ul>
+    </div>-->
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Robotic Process Automation</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li data-ng-repeat="item in menuitems">
+                    <a href="#{{item.state}}" data-ng-click="Navigate(item)">{{item.title}}</a>
+
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</body>
+</html>

@@ -1,0 +1,41 @@
+﻿<div ng-controller="WebReferenceController"  class="col-md-12" style="vertical-align: top">
+    <table id ="WebRef" class="col-md-12">
+       
+        <tr >
+            <td class="col-md-2"><label>Web Reference Number</label></td>
+           
+            <td class="col-md-2">
+                <input type="text"  ng-model="webref" ng-change="ChangeEntity()"  class ="form-control"> </td>         
+            <td class="col-md-2"><label>Received Date</label></td>
+           
+            <td class="col-md-2">
+                <input type="text" data-minimum-search-valid required name="Value"  ng-model="receivedate" ng-change="ChangeEntity()"  class ="form-control"> </td>         
+        
+         <td class="col-md-1"><label>Received Time</label></td>
+           
+            <td class="col-md-2">
+                <input type="text" data-minimum-search-valid required name="Value" ng-model="Received_Time" ng-change="ChangeEntity()"  class ="form-control"> </td>         
+
+            </tr>
+        <tr>
+        <td class="col-md-1"><label>FloorLimit</label></td>
+                <td class="col-md-1">
+                     <input type="text" name="Value" size="20" ng-model="floorlimit"  class ="form-control"> </td>
+                <td class="col-md-2"><label>isROT_Document_attached</label></td>
+                <td class="col-md-1">
+                     <input type="checkbox"  ng-model="isROT"  > </td> 
+           
+                 </tr>
+              <tr >
+                <td class="col-md-3"><label>isSurrender_Calc_attached</label></td>
+                <td class="col-md-1">
+                     <input type="checkbox"  ng-model="isSurrender"  > </td>
+                <td class="col-md-3"><label>isDocumentStamped</label></td>
+                <td class="col-md-1">
+                     <input type="checkbox"  ng-model="isDocument" > </td> 
+           
+                 </tr>
+        
+     
+    </table> 
+    </div>

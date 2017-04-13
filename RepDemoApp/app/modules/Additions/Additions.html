@@ -1,0 +1,701 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Addition-New Business</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--  <script src="assets/js/angular.min.js"></script>-->
+    <!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <script type="text/javascript">
+        $(function () {
+            $("#dealStartDate").datepicker();
+        });
+    </script>
+
+
+    <!-- <script src="AdditionsController.js"></script>-->
+</head>
+<body>
+    <div class="container" ng-controller="AdditionsController">
+        <div class="panel panel-primary">
+            <div class="panel-heading">Contract Details</div>
+            <div class="panel-body">
+                <div>
+                    <div class="row" style="padding: 5px;">
+                        <div class="col-md-2" style="text-align: end;">
+                            AWD Number :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" data-ng-model="ContractDetails.awdNumber" id="awdNo" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Received Date :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="date" class="form-control" style="height: 25px;" data-ng-model="ContractDetails.receivedDate" id="receivedDate" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Received Time :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" data-ng-model="ContractDetails.receivedTime" id="receivedTime" />
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 5px;">
+                        <div class="col-md-2" style="text-align: end;">
+                            Entity No :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" ng-keyup="$event.keyCode == 13 ? GetEntityDetails() : null" data-ng-model="ContractDetails.entityNumber" id="entityNo" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Contract No :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" id="contractNo" data-ng-model="ContractDetails.contractNumber" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Mobile No :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" id="Text1" data-ng-model="ContractDetails.mobileNumber" />
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 5px;">
+                        <div class="col-md-2" style="text-align: end;">
+                            Fax No :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" id="Text2" data-ng-model="ContractDetails.faxNumber" />
+                        </div>
+
+                        <div class="col-md-2" style="text-align: end;">
+                            Home Tel. No :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" id="Text3" data-ng-model="ContractDetails.homeTelNo" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Work Tel. No :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" id="Text4" data-ng-model="ContractDetails.workTelNo" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2" style="text-align: end;">
+                            Email Id : 
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" id="Text5" data-ng-model="ContractDetails.emailId" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Deal Details</div>
+            <div class="panel-body">
+                <div>
+                    <div class="row">
+                        <div class="col-md-2" style="text-align: end;">
+                            Add existing deal :
+                        </div>
+                        <div class="col-md-2" style="text-align: start;">
+                            <input type="checkbox" class="checkboxclass" ng-model="DealDetails.confirmed" ng-change="cpChange()" ng-true-value="'true'" ng-false-value="'false'" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Deal Number :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" data-ng-model="DealDetails.dealNumber" ng-disabled="DealDetails.isdisabled" id="txtDealNumber" />
+                        </div>
+                        <div class="col-md-1" style="text-align: end;">
+                            Products :
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" class="form-control" style="height: 25px;" name="products" ng-model="DealDetails.selectedProduct" placeholder="Select Product" typeahead="product as product.name for product in DealDetails.Productdata | filter:$viewValue | limitTo:25" typeahead-min-length='1' typeahead-editable="false" typeahead-no-results="noResults" ng-keyup="AddProductBack($event)" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2" style="text-align: end;">
+                            Currency :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" name="currency" ng-model="selectedcurrency" placeholder="Select Currency" required typeahead="currency as currency.name for currency in DealDetails.Currencydata.method | filter:$viewValue | limitTo:25" typeahead-min-length='1' typeahead-editable="false" required typeahead-no-results="noResults" ng-keyup="AddCurrencyBack($event)" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Broker Details</div>
+            <div class="panel-body">
+                <div>
+                    <div class="row" style="padding: 5px;">
+                        <div class="col-md-2" style="text-align: end;">
+                            Broker Name:
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" name="brokerName" ng-model="BrokerDetails.selectedBrokerName" placeholder="Select Broker" typeahead="broker as broker.Name for broker in BrokerDetails.BrokerNames | filter:$viewValue | limitTo:25" typeahead-min-length='1' typeahead-editable="false" typeahead-no-results="noResults" ng-keyup="AddBrokerBack($event)" />
+                            <!-- <input type="text" name="FundName" ng-model="BrokerDetails.selectedBrokerName" style="width: 200px; margin-top: 20px" placeholder="Select Broker Name" required class="input-small" typeahead="BrokerName as BrokerName.Name for BrokerName in BrokerDetails.BrokerNames | filter:$viewValue | limitTo:25" typeahead-min-length='1' typeahead-editable="false" required typeahead-no-results="noResults" ng-keyup="AddBrokerNamesBack($event)" />-->
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Commission Split:
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" id="txtComissionSplit" data-ng-model="BrokerDetails.CommissionSplit" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Initial lumpsum Fee:
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" id="txtInitialFees" style="height: 25px;" class="form-control" data-ng-model="BrokerDetails.InitiallumpsumFee" />
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 5px;">
+                        <div class="col-md-2" style="text-align: end;">
+                            Initial debit order Fee:
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" id="Text9" class="form-control" style="height: 25px;" data-ng-model="BrokerDetails.InitialdebitOrderFee" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Fund choice and iSelect Fund :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" id="txtAnnualFees" class="form-control" style="height: 25px;" data-ng-model="BrokerDetails.AnnualFee" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Annual fee for share portfolio :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" id="Text10" class="form-control" style="height: 25px;" data-ng-model="BrokerDetails.AnnualFeeSP" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2" style="text-align: end;">
+                            Annual fee for rebate :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" id="Text11" class="form-control" style="height: 25px;" data-ng-model="BrokerDetails.AnnualFeeRebate" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Lumpsum Details</div>
+            <div class="panel-body">
+                <div>
+                    <div class="row" style="padding: 5px;">
+                        I want to specify lumpsum Investment :
+                <input type="checkbox" ng-model="LumpSumDetails.selectedlumpsum" ng-change="cplumpsumChange()" ng-true-value="'true'" ng-false-value="'false'" />
+                    </div>
+                    <div style="display: none" id="divLumpSum">
+                        <div>
+                            <div class="row" style="padding: 5px;">
+                                <div class="col-md-2" style="text-align: end;">
+                                    Investment Amount :
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" data-ng-model="LumpSumDetails.InvetmentAmount" ng-disabled="islumpsumdisabled" class="form-control" style="height: 25px;" id="Text6" />
+                                </div>
+                                <div class="col-md-4" style="text-align: end;">
+                                    This is payment for missed debit order :
+                                    <input type="checkbox" ng-model="LumpSumDetails.selectedMissedDOPayemnt" ng-disabled="islumpsumdisabled" ng-true-value="'true'" ng-false-value="'false'" />
+                                </div>
+                            </div>
+                            <div class="row" style="padding: 5px;">
+                                <div class="col-md-2" style="text-align: end;">
+                                    Fund Type :
+                                </div>
+                                <div class="col-md-2">
+                                    <select ng-model="LumpSumDetails.selectedFundType" id="Select3" class="form-control" style="height: 31px;">
+                                        <option value="">Select Fund Type</option>
+                                        <option ng-repeat="p in LumpSumDetails.FundTypes.types" value="{{p.id}}">{{p.name}}
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-2" style="text-align: end;">
+                                    Fund Name :
+                                </div>
+                                <div class="col-md-2">
+                                    <input type="text" name="FundName" ng-model="LumpSumDetails.selectedFund" style="height: 25px; width: 265px;" placeholder="Select Fund" class="form-control" typeahead="f as f.Description for f in LumpSumDetails.FundNames | filter:$viewValue | limitTo:25" typeahead-min-length='1' typeahead-editable="false" typeahead-no-results="noResults" ng-keyup="AddLFundBack($event)" />
+                                </div>
+                                <div class="col-md-2" style="text-align: end;">
+                                    Allocation :
+                                </div>
+                                <div class="col-md-1">
+                                    <input type="text" name="FunAllocation" class="form-control" style="height: 25px;" ng-model="LumpSumDetails.Allocation" />
+                                </div>
+                                <div class="col-md-1">
+                                    <a data-ng-click="AddLumpSumDetail(LumpSumDetails)">Add Fund</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="padding: 10px;">
+                            <table class="table table-hover">
+                                <tr>
+                                    <th style="text-align: center;">Sr.No</th>
+                                    <th style="text-align: center;">Fund Type</th>
+                                    <th style="text-align: center;">Fund Name</th>
+                                    <th style="text-align: center;">Allocation</th>
+                                    <th style="text-align: center;">Action</th>
+                                </tr>
+                                <tr data-ng-repeat="x in LumpSumDetails.FundData">
+                                    <td>{{ $index+1 }}</td>
+                                    <td>{{ x.FundType }}</td>
+                                    <td>{{ x.FundName }}</td>
+                                    <td>{{ x.Allocation }}</td>
+                                    <td>
+                                        <a class="w3-btn w3-ripple" data-ng-click="DeleteLumpSumDetail($index)">Delete</a><!--&#9998;-->
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Phase In</div>
+            <div class="panel-body">
+                <div>
+                    <div class="row">
+                        <div class="col-md-3" style="text-align: end;">
+                            I want to specify Phase In :
+                            <input type="checkbox" ng-model="IsPhaseIn" ng-true-value="'true'" ng-false-value="'false'" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            First Phase In :
+                        </div>
+                        <div class="col-md-2">
+                            <select class="form-control" style="height: 31px;" ng-model="PhaseIn.selectedPhaseIn" id="ddlPhaseIn">
+                                <option value="">Select Phase In</option>
+                                <option ng-repeat="p in PhaseIn.Phase.member" value="{{p.name}}">{{p.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            No Of Occurances :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" name="NoOfOccurances" ng-model="PhaseIn.NoOfOcc" class="form-control" style="height: 25px;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Once Off Debit</div>
+            <div class="panel-body">
+                <div class="row" style="padding: 5px;">
+                    <div class="col-md-3" style="text-align: end;">
+                        I want to specify once Off debit :
+                        <input type="checkbox" ng-model="OnceOffDebit.IsOnceOff" ng-true-value="'true'" ng-false-value="'false'" />
+                    </div>
+                    <div class="col-md-2" style="text-align: end;">
+                        Once off debit amount :
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" name="OnceOffDebit" ng-model="OnceOffDebit.Amount" class="form-control" style="height: 25px;" />
+                    </div>
+                    <div class="col-md-5">
+                        <input type="radio" name="BankGroup" data-ng-model="OnceOffDebit.BankCapture" value="Existing" ng-change="switchDropDowns()" />Use existing bank details&nbsp;&nbsp;
+                        <input type="radio" name="BankGroup" data-ng-model="OnceOffDebit.BankCapture" value="New" ng-change="switchDropDowns()" />Capture new bank details
+                    </div>
+                </div>
+                <div class="row" style="padding: 5px;" id="trBankDetail">
+                    <div class="col-md-2" style="text-align: end;">
+                        Bank Name :
+                    </div>
+                    <div class="col-md-2">
+
+                        <select name="sourceOnceOff"
+                            class="form-control"
+                            id="selectEntityBank"
+                            ng-hide="OnceOffDebit.hidedrd"
+                            ng-model="OnceOffDebit.selectedBank"
+                            ng-options="s.Institution for s in OnceOffDebit.BankNames track by s.InstitutionNumber"
+                            ng-style="{'width':'100%'}">
+                        </select>
+
+                        
+                        <input type="text" id="txtAllBanks" ng-hide="OnceOffDebit.hidetxt" name="bank" ng-model="OnceOffDebit.selectedBank" placeholder="Select Bank" class="form-control" style="height: 25px;" typeahead="bank as bank.BankName for bank in OnceOffDebit.BankNames | filter:$viewValue | limitTo:25" typeahead-min-length='1' typeahead-editable="false" typeahead-no-results="noResults" ng-keyup="AddBankBack($event)" />
+                    </div>
+                    <div class="col-md-2" style="text-align: end;">
+                        Branch Name :
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" id="txtBranchNameAll" name="branch" ng-model="OnceOffDebit.selectedBranch" style="height: 25px;" placeholder="Select Branch Name" required class="form-control" typeahead="BranchName as BranchName.Branch_name for BranchName in OnceOffDebit.BranchNames | filter:$viewValue| limitTo:25" typeahead-min-length='1' typeahead-editable="false" required typeahead-no-results="noResults" ng-keyup="AddBankNamesBack($event)" />
+                        <!--<input type="text" class="form-control" id="txtEntityBankBranch" name="EntityBranch" ng-model="OnceOffDebit.selectedBranch" style="height: 25px;" />-->
+                    </div>
+                    <div class="col-md-2" style="text-align: end;">
+                        Code :
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" style="height: 25px;" name="code" ng-model="OnceOffDebit.BranchCode" />
+                    </div>
+                </div>
+                <div class="row" style="padding: 5px;" id="trAccDetail">
+                    <div class="col-md-2" style="text-align: end;">
+                        Account holder name :
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" style="height: 25px;" name="bank" ng-model="OnceOffDebit.AccountHolderName" />
+                    </div>
+                    <div class="col-md-2" style="text-align: end;">
+                        Account Number :
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" style="height: 25px;" name="branch" ng-model="OnceOffDebit.AccountNumber" />
+                    </div>
+                    <div class="col-md-2" style="text-align: end;">
+                        Type of account :
+                    </div>
+                    <div class="col-md-2">
+
+                        <input type="text" name="AccountType" ng-model="OnceOffDebit.AccountTypeName" class="form-control" style="height: 25px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Debit Order Details and Instrument</div>
+            <div class="panel-body">
+                <div id="divDebitDetail">
+                    <div class="row" style="padding: 5px;">
+                        <div class="col-md-4" style="text-align: end;">
+                            I want to specify debit order Investment :
+                            <input type="checkbox" ng-model="DebitOrderDetails.selectedDebitOrderInv" ng-change="cpDODebitOrderInstrChange()" ng-true-value="'true'" ng-false-value="'false'" />
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 5px;">
+                        <div class="col-md-2" style="text-align: end;">
+                            Debit Order Frequency :
+                        </div>
+                        <div class="col-md-2">
+                            <select class="form-control" style="height: 31px;" ng-model="selectedDOFrequency" id="Select2">
+                                <option value="">Select Frequency</option>
+                                <option ng-repeat="p in DebitOrderDetails.DebitOrderFrequency.Frequency" value="{{p.name}}">{{p.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Debit Order Amount :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" data-ng-model="DebitOrderDetails.DebitOrderAmount" />
+                        </div>
+
+                        <div class="col-md-2" style="text-align: end;">
+                            Debit OrderEscalation :
+                        </div>
+                        <div class="col-md-2" style="text-align: start;">
+                            <input type="checkbox" ng-model="DebitOrderDetails.Escalation" ng-true-value="'YES'" ng-false-value="'NO'" />
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 5px;">
+                        <div class="col-md-2" style="text-align: end;">
+                            Escalation Date :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" ng-model="DebitOrderDetails.EscalationDate" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Escalation Pecentage :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" data-ng-model="DebitOrderDetails.EscalationPecentage" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Debit Order Date :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="date" class="form-control" style="height: 25px;" id="dtDebitOrderDate" data-ng-model="DebitOrderDetails.DebitOrderDate" />
+                        </div>
+                    </div>
+                </div>
+                <div id="divDebitOrderInstr">
+                    <div class="row" style="padding: 5px;">
+                        <div class="col-md-2" style="text-align: end;">
+                            Fund Type :
+                        </div>
+                        <div class="col-md-2">
+                            <select ng-model="DebitOrderInstrument.selectedFundType" id="Select5" class="form-control" style="height: 31px;">
+                                <option value="">Select Fund Type</option>
+                                <option ng-repeat="p in DebitOrderInstrument.FundTypes.types" value="{{p.id}}">{{p.name}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Fund Name :
+                        </div>
+                        <div class="col-md-2">
+                            <!--<select class="form-control" style="height:31px;" ng-model="DebitOrderInstrument.selectedfname" id="Select6">
+                                <option ng-repeat="p in DebitOrderInstrument.FundNames.fund" value="{{p.id}}">{{p.name}}
+                                </option>
+                            </select>-->
+                            <input type="text" name="fname" ng-model="DebitOrderInstrument.selectedfname" placeholder="Select Fund" required style="height: 25px; width: 265px;" class="form-control" typeahead="f as f.Description for f in DebitOrderInstrument.FundNames | filter:$viewValue | limitTo:25" typeahead-min-length='1' typeahead-editable="false" required typeahead-no-results="noResults" ng-keyup="AddFundBack($event)" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Allocation :
+                        </div>
+                        <div class="col-md-1">
+                            <input type="text" data-ng-model="DebitOrderInstrument.Allocation" class="form-control" style="height: 25px;" id="Text8" />
+                        </div>
+                        <div class="col-md-1">
+                            <a data-ng-click="AddDebitOrderInstrDetails(DebitOrderInstrument)">Add Fund</a>
+                        </div>
+                    </div>
+                    <div style="padding: 10px;">
+                        <table class="table table-hover">
+                            <tr>
+                                <th style="text-align: center;">Sr.No</th>
+                                <th style="text-align: center;">Fund Type</th>
+                                <th style="text-align: center;">Fund Name</th>
+                                <th style="text-align: center;">Allocation</th>
+                                <th style="text-align: center;">Action</th>
+                            </tr>
+                            <tr data-ng-repeat="x in DebitOrderInstrument.DebitOrderInstrumentsDatas">
+                                <td>{{ $index+1 }}</td>
+                                <td>{{ x.FundType }}</td>
+                                <td>{{ x.FundName }}</td>
+                                <td>{{ x.Allocation }}</td>
+                                <td>
+                                    <a class="w3-btn w3-ripple" data-ng-click="DeleteDebitOrderInstrumentsDetail($index)">Delete</a><!--&#9998;-->
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div id="debitorderBankDetails">
+                    <div class="row" style="padding: 5px;">
+                        <div class="col-md-4" style="text-align: end;">
+                            Third party bank details :
+                                <input type="checkbox" class="checkboxclass" ng-model="DebitOrderBankDetails.TPBD" ng-true-value="'true'" ng-false-value="'false'" />
+                        </div>
+                        <div class="col-md-5">
+                            <input type="radio" name="DebitOrderBankGroup" data-ng-model="DebitOrderBankDetails.BankCapture" value="Existing" ng-change="switchDebitOrderBankDetailDropDowns()" />Use existing bank details&nbsp;&nbsp;
+                        <input type="radio" name="DebitOrderBankGroup" data-ng-model="DebitOrderBankDetails.BankCapture" value="New" ng-change="switchDebitOrderBankDetailDropDowns()" />Capture new bank details
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 5px;" id="Div1">
+                        <div class="col-md-2" style="text-align: end;">
+                            Bank Name :
+                        </div>
+                        <div class="col-md-2">
+
+                            <!-- <select class="form-control" id="select1" ng-hide="DebitOrderBankDetails.hidedrd" style="height: 31px;" ng-model="DebitOrderBankDetails.selectedBank" id="selectBankName">
+                                <option value="">Select Bank</option>
+                                <option ng-repeat="p in DebitOrderBankDetails.BankNames" value="{{p.InstitutionNumber}}">{{p.Institution}}
+                                </option>
+                            </select>-->
+                            <select name="source"
+                                class="form-control"
+                                id="select1"
+                                ng-hide="DebitOrderBankDetails.hidedrd"
+                                ng-model="DebitOrderBankDetails.selectedBank"
+                                ng-options="s.Institution for s in DebitOrderBankDetails.BankNames track by s.InstitutionNumber"
+                                ng-style="{'width':'100%'}">
+                            </select>
+                           
+                            <input type="text" id="Text7" ng-hide="DebitOrderBankDetails.hidetxt" name="bank" ng-model="DebitOrderBankDetails.selectedBank" placeholder="Select Bank" class="form-control" style="height: 25px;" typeahead="bank as bank.BankName for bank in DebitOrderBankDetails.BankNames | filter:$viewValue | limitTo:25" typeahead-min-length='1' typeahead-editable="false" typeahead-no-results="noResults" ng-keyup="AddDebitOrderBankBack($event)" />
+                           <!-- <!-- {{DebitOrderBankDetails.BankNames}}-->
+                             <!--{{DebitOrderBankDetails.selectedBank.BankName}}
+                            {{DebitOrderBankDetails.selectedBank.People_Number}}-->-->
+
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Branch Name :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" id="Text12" name="branch" ng-model="DebitOrderBankDetails.selectedBranch" style="height: 25px;" placeholder="Select Branch Name" required class="form-control" typeahead="BranchName as BranchName.Branch_name for BranchName in DebitOrderBankDetails.BranchNames | filter:$viewValue| limitTo:25" typeahead-min-length='1' typeahead-editable="false" required typeahead-no-results="noResults" ng-keyup="AddBankNamesBack($event)" />
+
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Code :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" name="code" ng-model="DebitOrderBankDetails.BranchCode" />
+                        </div>
+                    </div>
+                    <div class="row" style="padding: 5px;" id="Div2">
+                        <div class="col-md-2" style="text-align: end;">
+                            Account holder name :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" name="bank" ng-model="DebitOrderBankDetails.AccountHolderName" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Account Number :
+                        </div>
+                        <div class="col-md-2">
+                            <input type="text" class="form-control" style="height: 25px;" name="branch" ng-model="DebitOrderBankDetails.AccountNumber" />
+                        </div>
+                        <div class="col-md-2" style="text-align: end;">
+                            Type of account :
+                        </div>
+                        <div class="col-md-2">
+
+                            <input type="text" name="AccountType" ng-model="DebitOrderBankDetails.AccountTypeName" class="form-control" style="height: 25px;" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!--<div class="panel panel-primary">
+            <div class="panel-heading">Beneficiary Details</div>
+            <div class="panel-body">
+                <div class="row" style="padding: 5px;">
+                    <div class="col-md-2" style="text-align: end;">
+                        First Name :
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" style="height: 25px;" data-ng-model="BeneficiaryDetails.FirstName" />
+                    </div>
+                    <div class="col-md-2" style="text-align: end;">
+                        Last Name :
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" style="height: 25px;" data-ng-model="BeneficiaryDetails.LastName" />
+                    </div>
+                    <div class="col-md-2" style="text-align: end;">
+                        Benefit Percent :
+                    </div>
+                    <div class="col-md-1">
+                        <input type="text" class="form-control" style="height: 25px;" data-ng-model="BeneficiaryDetails.Percent" />
+                    </div>
+                    <div class="col-md-1">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <a id="btnAddBeneficiary" data-ng-click="AddBeneficiaryDetails(BeneficiaryDetails)">Add</a>
+                            </div>
+                            <div class="col-md-4">
+                                <a id="btnCancelBeneficiary" data-ng-click="CancelBenefitDetails(x)">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding: 5px;">
+                    <table class="table table-hover">
+                        <tr>
+                            <th style="text-align: center;">Sr.No</th>
+                            <th style="text-align: center;">First Name</th>
+                            <th style="text-align: center;">Last Name</th>
+                            <th style="text-align: center;">Benefit Percent</th>
+                            <th style="text-align: center;">Action</th>
+                        </tr>
+                        <tr data-ng-repeat="x in BeneficiaryDetails.BeneficiaryData">
+                            <td>{{ x.srno }}</td>
+                            <td>{{ x.FirstName }}</td>
+                            <td>{{ x.LastName }}</td>
+                            <td>{{ x.BenefitPercent }}</td>
+                            <td>
+                                <a data-ng-click="DeleteBeneficiaryDetails(x.srno)">Delete</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Income Instrument Details</div>
+            <div class="panel-body">
+                <div class="row" style="padding: 5px;">
+                    <div class="col-md-2" style="text-align: end;">
+                        Instrument :
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" style="height: 25px; width: 190px;" name="bank" ng-model="IncomeInstrumentDetails.selectedIncomeInstrument" placeholder="Select Income Instrument" required typeahead="IncomeInstrument as IncomeInstrument.Name for IncomeInstrument in IncomeInstrumentDetails.IncomeInstrumentdata | filter:$viewValue | limitTo:25" typeahead-min-length='1' typeahead-editable="false" required typeahead-no-results="noResults" ng-keyup="AddIncomeInstrumentBack($event)" />
+                       
+                    </div>
+                    <div class="col-md-2" style="text-align: end;">
+                        Actual Allocation :
+                    </div>
+                    <div class="col-md-2">
+                        <input type="text" class="form-control" style="height: 25px;" data-ng-model="IncomeInstrumentDetails.ActualAllocation" />
+                    </div>
+                    <div class="col-md-2" style="text-align: end;">
+                        Percentage :
+                    </div>
+                    <div class="col-md-1">
+                        <input type="text" class="form-control" style="height: 25px;" data-ng-model="IncomeInstrumentDetails.Percentage" />
+                    </div>
+                    <div class="col-md-1">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <a id="btnAddIncIns" data-ng-click="AddIncomeInstrumentDetails(IncomeInstrumentDetails)">Save</a>
+                            </div>
+                            <div class="col-md-3">
+                                <a id="btnCancelIncIns" data-ng-click="CancelIncomeInstrument(x)">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding: 5px;">
+                    <table class="table table-hover">
+                        <tr>
+                            <th style="text-align: center;">Sr.No</th>
+                            <th style="text-align: center;">Instrument Name</th>
+                            <th style="text-align: center;">Actual Allocation</th>
+                            <th style="text-align: center;">Percentage</th>
+                            <th style="text-align: center;">Action</th>
+
+                        </tr>
+                        <tr data-ng-repeat="x in IncomeInstrumentDetails.IncomeInstrData">
+                            <td>{{ x.srno }}</td>
+                            <td>{{ x.InstrumentName }}</td>
+                            <td>{{ x.ActualAllocation }}</td>
+                            <td>{{ x.Percentage }}</td>
+                            <td>
+                                <a data-ng-click="DeleteIncomeInstrumentDetails(x.srno)">Delete</a>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>-->
+
+        <div class="panel panel-primary">
+            <div class="panel-heading">Source Of Fund Details</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <select ng-model="SourceOfFunds.selectedSourceOfFunds" id="Select4" class="form-control" style="height: 31px;">
+                            <option value="">Select Fund Type</option>
+                            <option ng-repeat="p in SourceOfFunds.Sources.source" value="{{p.id}}">{{p.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-3" ng-if="SourceOfFunds.selectedSourceOfFunds=='6'">
+                        <input type="text" class="form-control" data-ng-model="SourceOfFunds.OtherText" />
+                    </div>
+                </div>
+            </div>
+            <div class="container-inline">
+                <button type="button" class="btn btn-primary" data-ng-click="GenerateXML()">Generate XML</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+
+

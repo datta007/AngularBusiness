@@ -1,0 +1,73 @@
+﻿  html, body {
+    	height: 100%;
+		margin: 0px;      
+	}
+	.Maincontainer {
+		height: 87%;		
+	}
+
+/*ngdialog-overlay > .dialogwidth
+{
+
+    width:100%;
+*/
+.dtheader {
+    width: 100%;
+    background: RED;
+    text-align: Center;
+    height: 100px;
+}
+
+.dtleftmenu1 {
+    position: relative;
+    float: left;
+    width: 20%;
+    background: BLUE;
+    text-align: Center;
+    height: 860px;
+}
+
+.dtleftmenu {
+    position: relative;
+    float:left;
+    width: 80%;
+    background: WHITE;
+    height: 40px;
+}
+.dtmenuPeopleDetails {
+    position: relative;
+    margin-top:1em;
+    float:right;
+    width: 20%;
+    background: WHITE;
+    height: 40px;
+    vertical-align:bottom;
+}
+
+.dtcontent {
+    position: relative;
+    display: inline-block;
+    width: 99%;
+    text-align: Center;
+    height: 100%;
+    margin-left:1%;
+}
+
+.dtfooter {
+    position: relative;
+    width:99%;
+    background: WHITE;
+    text-align: Center;
+     margin-left:1%;
+}
+
+.tbEntitySearch {
+    padding: 1%;
+    text-align: left;
+    background: border-box;
+}
+
+    .tbEntitySearch tr td {
+        /*padding-bottom: 2em;*/
+    }
+   
